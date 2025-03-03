@@ -1,29 +1,29 @@
 #!/bin/bash
 #A script to enumerate local information from a Linux host
-version="version 0.982"
+version="version 0.99"
 #@rebootuser
-
+ 
 #help function
 usage () 
 { 
 echo -e "\n\e[00;31m#########################################################\e[00m" 
 echo -e "\e[00;31m#\e[00m" "\e[00;33mLocal Linux Enumeration & Privilege Escalation Script\e[00m" "\e[00;31m#\e[00m"
 echo -e "\e[00;31m#########################################################\e[00m"
-echo -e "\e[00;33m# www.rebootuser.com | @rebootuser \e[00m"
+echo -e "\e[00;33m#  @rebootuser \e[00m"
 echo -e "\e[00;33m# $version\e[00m\n"
 echo -e "\e[00;33m# Example: ./LinEnum.sh -k keyword -r report -e /tmp/ -t \e[00m\n"
 
-		echo "OPTIONS:"
-		echo "-k	Enter keyword"
-		echo "-e	Enter export location"
-		echo "-s 	Supply user password for sudo checks (INSECURE)"
-		echo "-t	Include thorough (lengthy) tests"
-		echo "-r	Enter report name" 
-		echo "-h	Displays this help text"
-		echo -e "\n"
-		echo "Running with no options = limited scans/no output file"
-		
-echo -e "\e[00;31m#########################################################\e[00m"		
+                echo "OPTIONS:"
+                echo "-k        Enter keyword"
+                echo "-e        Enter export location"
+                echo "-s        Supply user password for sudo checks (INSECURE)"
+                echo "-t        Include thorough (lengthy) tests"
+                echo "-r        Enter report name" 
+                echo "-h        Displays this help text"
+                echo -e "\n"
+                echo "Running with no options = limited scans/no output file"
+
+echo -e "\e[00;31m#########################################################\e[00m"
 }
 header()
 {
@@ -31,30 +31,29 @@ echo -e "\n\e[00;31m#########################################################\e[
 echo -e "\e[00;31m#\e[00m" "\e[00;33mLocal Linux Enumeration & Privilege Escalation Script\e[00m" "\e[00;31m#\e[00m" 
 echo -e "\e[00;31m#########################################################\e[00m" 
 echo -e "\e[00;33m# www.rebootuser.com\e[00m" 
-echo -e "\e[00;33m# $version\e[00m\n" 
-
-}
-
-debug_info()
-{
-echo "[-] Debug Info" 
-
-if [ "$keyword" ]; then 
-	echo "[+] Searching for the keyword $keyword in conf, php, ini and log files" 
-fi
-
-if [ "$report" ]; then 
-	echo "[+] Report name = $report" 
-fi
+echo -e "\e[00;33m# $version\e[00m\n"                                                                              
+                                                                                                                   
+}                                                                                                                  
+                                                                                                                   
+debug_info()                                                                                                       
+{                                                                                                                  
+echo "[-] Debug Info"                                                                                              
+                                                                                                                   
+if [ "$keyword" ]; then                                                                                            
+        echo "[+] Searching for the keyword $keyword in conf, php, ini and log files"                              
+fi                                                                                                                 
+if [ "$report" ]; then                                                                                             
+        echo "[+] Report name = $report"                                                                           
+fi                                                                                                                 
 
 if [ "$export" ]; then 
-	echo "[+] Export location = $export" 
+        echo "[+] Export location = $export" 
 fi
 
 if [ "$thorough" ]; then 
-	echo "[+] Thorough tests = Enabled" 
+        echo "[+] Thorough tests = Enabled" 
 else 
-	echo -e "\e[00;33m[+] Thorough tests = Disabled\e[00m" 
+        echo -e "\e[00;33m[+] Thorough tests = Disabled\e[00m" 
 fi
 
 sleep 2
@@ -78,8 +77,8 @@ echo -e "\e[00;33mScan started at:"; date
 echo -e "\e[00m\n" 
 }
 
-# useful binaries (thanks to https://gtfobins.github.io/)
-binarylist='aria2c\|arp\|ash\|awk\|base64\|bash\|busybox\|cat\|chmod\|chown\|cp\|csh\|curl\|cut\|dash\|date\|dd\|diff\|dmsetup\|docker\|ed\|emacs\|env\|expand\|expect\|file\|find\|flock\|fmt\|fold\|ftp\|gawk\|gdb\|gimp\|git\|grep\|head\|ht\|iftop\|ionice\|ip$\|irb\|jjs\|jq\|jrunscript\|ksh\|ld.so\|ldconfig\|less\|logsave\|lua\|make\|man\|mawk\|more\|mv\|mysql\|nano\|nawk\|nc\|netcat\|nice\|nl\|nmap\|node\|od\|openssl\|perl\|pg\|php\|pic\|pico\|python\|readelf\|rlwrap\|rpm\|rpmquery\|rsync\|ruby\|run-parts\|rvim\|scp\|script\|sed\|setarch\|sftp\|sh\|shuf\|socat\|sort\|sqlite3\|ssh$\|start-stop-daemon\|stdbuf\|strace\|systemctl\|tail\|tar\|taskset\|tclsh\|tee\|telnet\|tftp\|time\|timeout\|ul\|unexpand\|uniq\|unshare\|vi\|vim\|watch\|wget\|wish\|xargs\|xxd\|zip\|zsh'
+# useful binaries (thanks to https://gtfobins.github.io/ - update 2025-02-26)
+binarylist='7z\|aa-exec\|ab\|agetty\|alpine\|ansible-playbook\|ansible-test\|aoss\|apache2ctl\|apt-get\|apt\|ar\|aria2c\|arj\|arp\|as\|ascii-xfr\|ascii85\|ash\|aspell\|at\|atobm\|awk\|aws\|base32\|base58\|base64\|basenc\|basez\|bash\|batcat\|bc\|bconsole\|bpftrace\|bridge\|bundle\|bundler\|busctl\|busybox\|byebug\|bzip2\|c89\|c99\|cabal\|cancel\|capsh\|cat\|cdist\|certbot\|check_by_ssh\|check_cups\|check_log\|check_memory\|check_raid\|check_ssl_cert\|check_statusfile\|chmod\|choom\|chown\|chroot\|clamscan\|cmp\|cobc\|column\|comm\|composer\|cowsay\|cowthink\|cp\|cpan\|cpio\|cpulimit\|crash\|crontab\|csh\|csplit\|csvtool\|cupsfilter\|curl\|cut\|dash\|date\|dc\|dd\|debugfs\|dialog\|diff\|dig\|distcc\|dmesg\|dmidecode\|dmsetup\|dnf\|docker\|dos2unix\|dosbox\|dotnet\|dpkg\|dstat\|dvips\|easy_install\|eb\|ed\|efax\|elvish\|emacs\|enscript\|env\|eqn\|espeak\|ex\|exiftool\|expand\|expect\|facter\|file\|find\|finger\|fish\|flock\|fmt\|fold\|fping\|ftp\|gawk\|gcc\|gcloud\|gcore\|gdb\|gem\|genie\|genisoimage\|ghc\|ghci\|gimp\|ginsh\|git\|grc\|grep\|gtester\|gzip\|hd\|head\|hexdump\|highlight\|hping3\|iconv\|iftop\|install\|ionice\|ip\|irb\|ispell\|jjs\|joe\|join\|journalctl\|jq\|jrunscript\|jtag\|julia\|knife\|ksh\|ksshell\|ksu\|kubectl\|latex\|latexmk\|ld.so\|ldconfig\|less\|lftp\|links\|ln\|loginctl\|logsave\|look\|lp\|ltrace\|lua\|lualatex\|luatex\|lwp-download\|lwp-request\|mail\|make\|man\|mawk\|minicom\|more\|mosquitto\|mount\|msfconsole\|msgattrib\|msgcat\|msgconv\|msgfilter\|msgmerge\|msguniq\|mtr\|multitime\|mv\|mysql\|nano\|nasm\|nawk\|nc\|ncdu\|ncftp\|neofetch\|nft\|nice\|nl\|nm\|nmap\|node\|nohup\|npm\|nroff\|nsenter\|ntpdate\|octave\|od\|openssl\|openvpn\|openvt\|opkg\|pandoc\|paste\|pax\|pdb\|pdflatex\|pdftex\|perf\|perl\|perlbug\|pexec\|pg\|php\|pic\|pico\|pidstat\|pip\|pkexec\|pkg\|posh\|pr\|pry\|psftp\|psql\|ptx\|puppet\|pwsh\|python\|rake\|rc\|readelf\|red\|redcarpet\|redis\|restic\|rev\|rlogin\|rlwrap\|rpm\|rpmdb\|rpmquery\|rpmverify\|rsync\|rtorrent\|ruby\|run-mailcap\|run-parts\|runscript\|rview\|rvim\|sash\|scanmem\|scp\|screen\|script\|scrot\|sed\|service\|setarch\|setfacl\|setlock\|sftp\|sg\|shuf\|slsh\|smbclient\|snap\|socat\|socket\|soelim\|softlimit\|sort\|split\|sqlite3\|sqlmap\|ss\|ssh-agent\|ssh-keygen\|ssh-keyscan\|ssh\|sshpass\|start-stop-daemon\|stdbuf\|strace\|strings\|su\|sudo\|sysctl\|systemctl\|systemd-resolve\|tac\|tail\|tar\|task\|taskset\|tasksh\|tbl\|tclsh\|tcpdump\|tdbtool\|tee\|telnet\|terraform\|tex\|tftp\|tic\|time\|timedatectl\|timeout\|tmate\|tmux\|top\|torify\|torsocks\|troff\|tshark\|ul\|unexpand\|uniq\|unshare\|unsquashfs\|unzip\|update-alternatives\|uudecode\|uuencode\|vagrant\|valgrind\|varnishncsa\|vi\|view\|vigr\|vim\|vimdiff\|vipw\|virsh\|volatility\|w3m\|wall\|watch\|wc\|wget\|whiptail\|whois\|wireshark\|wish\|xargs\|xdg-user-dir\|xdotool\|xelatex\|xetex\|xmodmap\|xmore\|xpad\|xxd\|xz\|yarn\|yash\|yelp\|yum\|zathura\|zip\|zsh\|zsoelim\|zypper'
 
 system_info()
 {
@@ -139,7 +138,7 @@ if [ "$loggedonusrs" ]; then
 fi
 
 #lists all id's and respective group(s)
-grpinfo=`for i in $(cut -d":" -f1 /etc/passwd 2>/dev/null);do id $i;done 2>/dev/null`
+grpinfo=`for i in $(cut -d":" -f1 /etc/passwd 2>/dev/null);do echo -e "$i: $(id $i)";done 2>/dev/null`
 if [ "$grpinfo" ]; then
   echo -e "\e[00;31m[-] Group memberships:\e[00m\n$grpinfo"
   echo -e "\n"
@@ -276,73 +275,82 @@ if [ "$homedirperms" ]; then
   echo -e "\n"
 fi
 
-#looks for files we can write to that don't belong to us
-if [ "$thorough" = "1" ]; then
-  grfilesall=`find / -writable ! -user \`whoami\` -type f ! -path "/proc/*" ! -path "/sys/*" -exec ls -al {} \; 2>/dev/null`
+#checks the value of ptrace_scope, if 0 might help elevate privs - feature req by @FrankSpierings
+ptrace_scope=`cat /proc/sys/kernel/yama/ptrace_scope 2>/dev/null`
+if [[ "${ptrace_scope}" == "0" ]]; then
+        echo -e "\e[00;31m[-] ptrace_scope may allow privilege escalation when set to 0:\e[00m\nptrace_scope=$ptrace_scope"
+        echo -e "See exploitation details: https://github.com/nongiach/sudo_inject"
+        echo -e "See ptrace_scope reference: https://www.kernel.org/doc/Documentation/security/Yama.txt"
+        echo -e "\n"
+fi
+
+#looks for files we can write to that don't belong to us - thanks @jasv0 for code optimization
+[ "$thorough" ] && {  
+grfilesall=`find / -writable ! -user \`whoami\` -type f ! -path "/proc/*" ! -path "/sys/*" -exec ls -al {} \; 2>/dev/null`
   if [ "$grfilesall" ]; then
     echo -e "\e[00;31m[-] Files not owned by user but writable by group:\e[00m\n$grfilesall" 
     echo -e "\n"
   fi
-fi
+}
 
 #looks for files that belong to us
-if [ "$thorough" = "1" ]; then
+[ "$thorough" ] && {
   ourfilesall=`find / -user \`whoami\` -type f ! -path "/proc/*" ! -path "/sys/*" -exec ls -al {} \; 2>/dev/null`
   if [ "$ourfilesall" ]; then
     echo -e "\e[00;31m[-] Files owned by our user:\e[00m\n$ourfilesall"
     echo -e "\n"
   fi
-fi
+}
 
 #looks for hidden files
-if [ "$thorough" = "1" ]; then
+[ "$thorough" ] && {
   hiddenfiles=`find / -name ".*" -type f ! -path "/proc/*" ! -path "/sys/*" -exec ls -al {} \; 2>/dev/null`
   if [ "$hiddenfiles" ]; then
     echo -e "\e[00;31m[-] Hidden files:\e[00m\n$hiddenfiles"
     echo -e "\n"
   fi
-fi
+}
 
 #looks for world-reabable files within /home - depending on number of /home dirs & files, this can take some time so is only 'activated' with thorough scanning switch
-if [ "$thorough" = "1" ]; then
+[ "$thorough" ] && {
 wrfileshm=`find /home/ -perm -4 -type f -exec ls -al {} \; 2>/dev/null`
-	if [ "$wrfileshm" ]; then
-		echo -e "\e[00;31m[-] World-readable files within /home:\e[00m\n$wrfileshm" 
-		echo -e "\n"
-	fi
-fi
+        if [ "$wrfileshm" ]; then
+                echo -e "\e[00;31m[-] World-readable files within /home:\e[00m\n$wrfileshm" 
+                echo -e "\n"
+        fi
+}
 
-if [ "$thorough" = "1" ]; then
-	if [ "$export" ] && [ "$wrfileshm" ]; then
-		mkdir $format/wr-files/ 2>/dev/null
-		for i in $wrfileshm; do cp --parents $i $format/wr-files/ ; done 2>/dev/null
-	fi
-fi
+[ "$thorough" ] && {
+        if [ "$export" ] && [ "$wrfileshm" ]; then
+                mkdir $format/wr-files/ 2>/dev/null
+                for i in $wrfileshm; do cp --parents $i $format/wr-files/ ; done 2>/dev/null
+        fi
+}
 
 #lists current user's home directory contents
-if [ "$thorough" = "1" ]; then
+[ "$thorough" ] && {
 homedircontents=`ls -ahl ~ 2>/dev/null`
-	if [ "$homedircontents" ] ; then
-		echo -e "\e[00;31m[-] Home directory contents:\e[00m\n$homedircontents" 
-		echo -e "\n" 
-	fi
-fi
+        if [ "$homedircontents" ] ; then
+                echo -e "\e[00;31m[-] Home directory contents:\e[00m\n$homedircontents" 
+                echo -e "\n" 
+        fi
+}
 
 #checks for if various ssh files are accessible - this can take some time so is only 'activated' with thorough scanning switch
-if [ "$thorough" = "1" ]; then
+[ "$thorough" ] && {
 sshfiles=`find / \( -name "id_dsa*" -o -name "id_rsa*" -o -name "known_hosts" -o -name "authorized_hosts" -o -name "authorized_keys" \) -exec ls -la {} 2>/dev/null \;`
-	if [ "$sshfiles" ]; then
-		echo -e "\e[00;31m[-] SSH keys/host information found in the following locations:\e[00m\n$sshfiles" 
-		echo -e "\n"
-	fi
-fi
+        if [ "$sshfiles" ]; then
+                echo -e "\e[00;31m[-] SSH keys/host information found in the following locations:\e[00m\n$sshfiles" 
+                echo -e "\n"
+        fi
+}
 
-if [ "$thorough" = "1" ]; then
-	if [ "$export" ] && [ "$sshfiles" ]; then
-		mkdir $format/ssh-files/ 2>/dev/null
-		for i in $sshfiles; do cp --parents $i $format/ssh-files/; done 2>/dev/null
-	fi
-fi
+[ "$thorough" ] && {
+        if [ "$export" ] && [ "$sshfiles" ]; then
+                mkdir $format/ssh-files/ 2>/dev/null
+                for i in $sshfiles; do cp --parents $i $format/ssh-files/; done 2>/dev/null
+        fi
+}
 
 #is root permitted to login via ssh
 sshrootlogin=`grep "PermitRootLogin " /etc/ssh/sshd_config 2>/dev/null | grep -v "#" | awk '{print  $2}'`
@@ -375,7 +383,7 @@ fi
 #current path configuration
 pathinfo=`echo $PATH 2>/dev/null`
 if [ "$pathinfo" ]; then
-  pathswriteable=`ls -ld $(echo $PATH | tr ":" " ")`
+  pathswriteable=`ls -ld $(echo $PATH | tr ":" " ") 2>/dev/null`
   echo -e "\e[00;31m[-] Path information:\e[00m\n$pathinfo" 
   echo -e "$pathswriteable"
   echo -e "\n"
@@ -466,15 +474,15 @@ if [ "$cronother" ]; then
 fi
 
 # list systemd timers
-if [ "$thorough" = "1" ]; then
+[ "$thorough" ] && {
   # include inactive timers in thorough mode
   systemdtimers="$(systemctl list-timers --all 2>/dev/null)"
   info=""
-else
+} || {
   systemdtimers="$(systemctl list-timers 2>/dev/null |head -n -1 2>/dev/null)"
   # replace the info in the output with a hint towards thorough mode
   info="\e[2mEnable thorough tests to see inactive timers\e[00m"
-fi
+}
 if [ "$systemdtimers" ]; then
   echo -e "\e[00;31m[-] Systemd timers:\e[00m\n$systemdtimers\n$info"
   echo -e "\n"
@@ -564,6 +572,27 @@ if [ ! "$udpservs" ] && [ "$udpservsip" ]; then
   echo -e "\e[00;31m[-] Listening UDP:\e[00m\n$udpservsip" 
   echo -e "\n"
 fi
+
+#Firewall config check
+iptables=`/sbin/iptables -L 2>/dev/null`
+iptables_nat=`/sbin/iptables -L -t nat 2>/dev/null`
+iptables_man=`/sbin/iptables -L -t mangle 2>/dev/null`
+if [ "$iptables" ]; then
+  echo -e "\e[00;31m[-] Firewall Config:\e[00m\n$iptables"
+  echo "Usually requires root privileges."
+  echo -e "\n"
+fi
+if [ "$iptables_nat" ]; then
+  echo -e "\e[00;31m[-] Firewall Config(NAT):\e[00m\n$iptables_nat"
+  echo "Usually requires root privileges."
+  echo -e "\n"
+fi
+if [ "$iptables_man" ]; then
+  echo -e "\e[00;31m[-] Firewall Config(mangle):\e[00m\n$iptables_man"
+  echo "Usually requires root privileges."
+  echo -e "\n"
+fi
+
 }
 
 services_info()
@@ -571,9 +600,9 @@ services_info()
 echo -e "\e[00;33m### SERVICES #############################################\e[00m" 
 
 #running processes
-psaux=`ps aux 2>/dev/null`
-if [ "$psaux" ]; then
-  echo -e "\e[00;31m[-] Running processes:\e[00m\n$psaux" 
+psfaux=`ps faux 2>/dev/null`
+if [ "$psfaux" ]; then
+  echo -e "\e[00;31m[-] Running processes:\e[00m\n$psfaux" 
   echo -e "\n"
 fi
 
@@ -710,6 +739,20 @@ if [ "$sudover" ]; then
   echo -e "\n"
 fi
 
+#redis details
+redisver=`redis-server --version 2>/dev/null | grep "Redis server v="`
+if [ "$redisver" ]; then
+  echo -e "\e[00;31m[-] Redis version:\e[00m\n$redisver"
+  echo -e "\n"
+fi
+
+#redis password check
+redisanon=`redis-cli ping 2>/dev/null`
+if [ "$redisanon" == "PONG" ]; then
+  echo -e "\e[00;31m[-] Redis is NOT PASSWORD PROTECTED!"
+  echo -e "\n"
+fi
+
 #mysql details - if installed
 mysqlver=`mysql --version 2>/dev/null`
 if [ "$mysqlver" ]; then
@@ -797,13 +840,13 @@ if [ "$htpasswd" ]; then
 fi
 
 #anything in the default http home dirs (a thorough only check as output can be large)
-if [ "$thorough" = "1" ]; then
-  apachehomedirs=`ls -alhR /var/www/ 2>/dev/null; ls -alhR /srv/www/htdocs/ 2>/dev/null; ls -alhR /usr/local/www/apache2/data/ 2>/dev/null; ls -alhR /opt/lampp/htdocs/ 2>/dev/null`
+[ "$thorough" ] && {  
+apachehomedirs=`ls -alhR /var/www/ 2>/dev/null; ls -alhR /srv/www/htdocs/ 2>/dev/null; ls -alhR /usr/local/www/apache2/data/ 2>/dev/null; ls -alhR /opt/lampp/htdocs/ 2>/dev/null`
   if [ "$apachehomedirs" ]; then
     echo -e "\e[00;31m[-] www home dir contents:\e[00m\n$apachehomedirs" 
     echo -e "\n"
   fi
-fi
+}
 
 }
 
@@ -811,8 +854,8 @@ interesting_files()
 {
 echo -e "\e[00;33m### INTERESTING FILES ####################################\e[00m" 
 
-#checks to see if various files are installed
-echo -e "\e[00;31m[-] Useful file locations:\e[00m" ; which nc 2>/dev/null ; which netcat 2>/dev/null ; which wget 2>/dev/null ; which nmap 2>/dev/null ; which gcc 2>/dev/null; which curl 2>/dev/null 
+#checks to see if various files are installed - thanks @plasticuproject, @mohinparamasivam for addition
+echo -e "\e[00;31m[-] Useful file locations:\e[00m" ; which nc 2>/dev/null ; which netcat 2>/dev/null ; which wget 2>/dev/null ; which nmap 2>/dev/null ; which gcc 2>/dev/null; which curl 2>/dev/null; which tshark 2>/dev/null; which tcpdump 2>/dev/null; which wireshark 2>/dev/null; which awk 2>/dev/null; which perl 2>/dev/null; which python 2>/dev/null; which ruby 2>/dev/null; which vi 2>/dev/null; which vim 2>/dev/null; which tftp 2>/dev/null; which ftp 2>/dev/null;
 echo -e "\n" 
 
 #limited search for installed compilers
@@ -825,6 +868,12 @@ fi
 #manual check - lists out sensitive files, can we read/modify etc.
 echo -e "\e[00;31m[-] Can we read/write sensitive files:\e[00m" ; ls -la /etc/passwd 2>/dev/null ; ls -la /etc/group 2>/dev/null ; ls -la /etc/profile 2>/dev/null; ls -la /etc/shadow 2>/dev/null ; ls -la /etc/master.passwd 2>/dev/null 
 echo -e "\n" 
+
+#check trash files
+trashfiles=`ls -la  ~/.local/share/Trash/files/ 2>/dev/null`
+if [[ "${trashfiles}" ]]; then
+       echo -e "\e[00;31m[-] Trash files:\e[00m\n$trashfiles"
+fi       
 
 #search for suid files
 allsuid=`find / -perm -4000 -type f 2>/dev/null`
@@ -916,72 +965,72 @@ fi
 if [ "$userswithcaps" ] ; then
 #matches the capabilities found associated with users with the current user
 matchedcaps=`echo -e "$userswithcaps" | grep \`whoami\` | awk '{print $1}' 2>/dev/null`
-	if [ "$matchedcaps" ]; then
-		echo -e "\e[00;33m[+] Capabilities associated with the current user:\e[00m\n$matchedcaps"
-		echo -e "\n"
-		#matches the files with capapbilities with capabilities associated with the current user
-		matchedfiles=`echo -e "$matchedcaps" | while read -r cap ; do echo -e "$fileswithcaps" | grep "$cap" ; done 2>/dev/null`
-		if [ "$matchedfiles" ]; then
-			echo -e "\e[00;33m[+] Files with the same capabilities associated with the current user (You may want to try abusing those capabilties):\e[00m\n$matchedfiles"
-			echo -e "\n"
-			#lists the permissions of the files having the same capabilies associated with the current user
-			matchedfilesperms=`echo -e "$matchedfiles" | awk '{print $1}' | while read -r f; do ls -la $f ;done 2>/dev/null`
-			echo -e "\e[00;33m[+] Permissions of files with the same capabilities associated with the current user:\e[00m\n$matchedfilesperms"
-			echo -e "\n"
-			if [ "$matchedfilesperms" ]; then
-				#checks if any of the files with same capabilities associated with the current user is writable
-				writablematchedfiles=`echo -e "$matchedfiles" | awk '{print $1}' | while read -r f; do find $f -writable -exec ls -la {} + ;done 2>/dev/null`
-				if [ "$writablematchedfiles" ]; then
-					echo -e "\e[00;33m[+] User/Group writable files with the same capabilities associated with the current user:\e[00m\n$writablematchedfiles"
-					echo -e "\n"
-				fi
-			fi
-		fi
-	fi
+        if [ "$matchedcaps" ]; then
+                echo -e "\e[00;33m[+] Capabilities associated with the current user:\e[00m\n$matchedcaps"
+                echo -e "\n"
+                #matches the files with capapbilities with capabilities associated with the current user
+                matchedfiles=`echo -e "$matchedcaps" | while read -r cap ; do echo -e "$fileswithcaps" | grep "$cap" ; done 2>/dev/null`
+                if [ "$matchedfiles" ]; then
+                        echo -e "\e[00;33m[+] Files with the same capabilities associated with the current user (You may want to try abusing those capabilties):\e[00m\n$matchedfiles"
+                        echo -e "\n"
+                        #lists the permissions of the files having the same capabilies associated with the current user
+                        matchedfilesperms=`echo -e "$matchedfiles" | awk '{print $1}' | while read -r f; do ls -la $f ;done 2>/dev/null`
+                        echo -e "\e[00;33m[+] Permissions of files with the same capabilities associated with the current user:\e[00m\n$matchedfilesperms"
+                        echo -e "\n"
+                        if [ "$matchedfilesperms" ]; then
+                                #checks if any of the files with same capabilities associated with the current user is writable
+                                writablematchedfiles=`echo -e "$matchedfiles" | awk '{print $1}' | while read -r f; do find $f -writable -exec ls -la {} + ;done 2>/dev/null`
+                                if [ "$writablematchedfiles" ]; then
+                                        echo -e "\e[00;33m[+] User/Group writable files with the same capabilities associated with the current user:\e[00m\n$writablematchedfiles"
+                                        echo -e "\n"
+                                fi
+                        fi
+                fi
+        fi
 fi
 
-#look for private keys - thanks djhohnstein
-if [ "$thorough" = "1" ]; then
-privatekeyfiles=`grep -rl "PRIVATE KEY-----" /home 2>/dev/null`
-	if [ "$privatekeyfiles" ]; then
-  		echo -e "\e[00;33m[+] Private SSH keys found!:\e[00m\n$privatekeyfiles"
-  		echo -e "\n"
-	fi
-fi
+#look for private keys - thanks djhohnstein, emlyn
+[ "$thorough" ] && {
+privatekeyfiles=`grep -rl "[P]RIVATE KEY-----" /home 2>/dev/null`
+        if [ "$privatekeyfiles" ]; then
+                echo -e "\e[00;33m[+] Private SSH keys found!:\e[00m\n$privatekeyfiles"
+                echo -e "\n"
+        fi
+}
 
-#look for AWS keys - thanks djhohnstein
-if [ "$thorough" = "1" ]; then
-awskeyfiles=`grep -rli "aws_secret_access_key" /home 2>/dev/null`
-	if [ "$awskeyfiles" ]; then
-  		echo -e "\e[00;33m[+] AWS secret keys found!:\e[00m\n$awskeyfiles"
-  		echo -e "\n"
-	fi
-fi
+#look for AWS keys - thanks djhohnstein, emlyn
+[ "$thorough" ] && {
+awskeyfiles=`grep -rli "[a]ws_secret_access_key" /home 2>/dev/null`
+        if [ "$awskeyfiles" ]; then
+                echo -e "\e[00;33m[+] AWS secret keys found!:\e[00m\n$awskeyfiles"
+                echo -e "\n"
+        fi
+}
 
 #look for git credential files - thanks djhohnstein
-if [ "$thorough" = "1" ]; then
+[ "$thorough" ] && {
 gitcredfiles=`find / -name ".git-credentials" 2>/dev/null`
-	if [ "$gitcredfiles" ]; then
-  		echo -e "\e[00;33m[+] Git credentials saved on the machine!:\e[00m\n$gitcredfiles"
-  		echo -e "\n"
-	fi
-fi
+        if [ "$gitcredfiles" ]; then
+                echo -e "\e[00;33m[+] Git credentials saved on the machine!:\e[00m\n$gitcredfiles"
+                echo -e "\n"
+        fi
+}
 
 #list all world-writable files excluding /proc and /sys
-if [ "$thorough" = "1" ]; then
+[ "$thorough" ] && {
 wwfiles=`find / ! -path "*/proc/*" ! -path "/sys/*" -perm -2 -type f -exec ls -la {} 2>/dev/null \;`
-	if [ "$wwfiles" ]; then
-		echo -e "\e[00;31m[-] World-writable files (excluding /proc and /sys):\e[00m\n$wwfiles" 
-		echo -e "\n"
-	fi
-fi
+        if [ "$wwfiles" ]; then
+                echo -e "\e[00;31m[-] World-writable files (excluding /proc and /sys):\e[00m\n$wwfiles" 
+                echo -e "\n"
+        fi
+}
 
-if [ "$thorough" = "1" ]; then
-	if [ "$export" ] && [ "$wwfiles" ]; then
-		mkdir $format/ww-files/ 2>/dev/null
-		for i in $wwfiles; do cp --parents $i $format/ww-files/; done 2>/dev/null
-	fi
-fi
+[ "$thorough" ] && {
+        if [ "$export" ] && [ "$wwfiles" ]; then
+                mkdir $format/ww-files/ 2>/dev/null
+                for i in $wwfiles; do cp --parents $i $format/ww-files/; done 2>/dev/null
+        fi
+}
 
 #are any .plan files accessible in /home (could contain useful information)
 usrplan=`find /home -iname *.plan -exec ls -la {} \; -exec cat {} 2>/dev/null \;`
@@ -1035,6 +1084,12 @@ if [ "$rhostssys" ]; then
   echo -e "\n"
 fi
 
+nfsmounts=`cat /proc/mounts | grep nfs 2>/dev/null`
+if [ "$nfsmounts" ]; then
+  echo -e "\e[00;33m[+] Connected NFS Mounts: \e[00m\n$nfsmounts"
+  echo -e "\n"
+fi
+
 if [ "$export" ] && [ "$rhostssys" ]; then
   mkdir $format/rhosts/ 2>/dev/null
   for i in $rhostssys; do cp --parents $i $format/rhosts/; done 2>/dev/null
@@ -1052,7 +1107,7 @@ if [ "$export" ] && [ "$nfsexports" ]; then
   cp /etc/exports $format/etc-export/exports 2>/dev/null
 fi
 
-if [ "$thorough" = "1" ]; then
+[ "$thorough" ] && {  
   #phackt
   #displaying /etc/fstab
   fstab=`cat /etc/fstab 2>/dev/null`
@@ -1061,7 +1116,7 @@ if [ "$thorough" = "1" ]; then
     echo -e "$fstab"
     echo -e "\n"
   fi
-fi
+}
 
 #looking for credentials in /etc/fstab
 fstab=`grep username /etc/fstab 2>/dev/null |awk '{sub(/.*\username=/,"");sub(/\,.*/,"")}1' 2>/dev/null| xargs -r echo username: 2>/dev/null; grep password /etc/fstab 2>/dev/null |awk '{sub(/.*\password=/,"");sub(/\,.*/,"")}1' 2>/dev/null| xargs -r echo password: 2>/dev/null; grep domain /etc/fstab 2>/dev/null |awk '{sub(/.*\domain=/,"");sub(/\,.*/,"")}1' 2>/dev/null| xargs -r echo domain: 2>/dev/null`
@@ -1095,9 +1150,9 @@ if [ "$keyword" = "" ]; then
       echo -e "\e[00;31m[-] Find keyword ($keyword) in .conf files (recursive 4 levels - output format filepath:identified line number where keyword appears):\e[00m\n$confkey" 
       echo -e "\n" 
      else 
-	echo -e "\e[00;31m[-] Find keyword ($keyword) in .conf files (recursive 4 levels):\e[00m" 
-	echo -e "'$keyword' not found in any .conf files" 
-	echo -e "\n" 
+        echo -e "\e[00;31m[-] Find keyword ($keyword) in .conf files (recursive 4 levels):\e[00m" 
+        echo -e "'$keyword' not found in any .conf files" 
+        echo -e "\n" 
     fi
 fi
 
@@ -1105,7 +1160,7 @@ if [ "$keyword" = "" ]; then
   :
   else
     if [ "$export" ] && [ "$confkey" ]; then
-	  confkeyfile=`find / -maxdepth 4 -name *.conf -type f -exec grep -lHn $keyword {} \; 2>/dev/null`
+          confkeyfile=`find / -maxdepth 4 -name *.conf -type f -exec grep -lHn $keyword {} \; 2>/dev/null`
       mkdir --parents $format/keyword_file_matches/config_files/ 2>/dev/null
       for i in $confkeyfile; do cp --parents $i $format/keyword_file_matches/config_files/ ; done 2>/dev/null
   fi
@@ -1145,9 +1200,9 @@ if [ "$keyword" = "" ];then
       echo -e "\e[00;31m[-] Find keyword ($keyword) in .log files (recursive 4 levels - output format filepath:identified line number where keyword appears):\e[00m\n$logkey" 
       echo -e "\n" 
      else 
-	echo -e "\e[00;31m[-] Find keyword ($keyword) in .log files (recursive 4 levels):\e[00m" 
-	echo -e "'$keyword' not found in any .log files"
-	echo -e "\n" 
+        echo -e "\e[00;31m[-] Find keyword ($keyword) in .log files (recursive 4 levels):\e[00m" 
+        echo -e "'$keyword' not found in any .log files"
+        echo -e "\n" 
     fi
 fi
 
@@ -1156,7 +1211,7 @@ if [ "$keyword" = "" ];then
   else
     if [ "$export" ] && [ "$logkey" ]; then
       logkeyfile=`find / -maxdepth 4 -name *.log -type f -exec grep -lHn $keyword {} \; 2>/dev/null`
-	  mkdir --parents $format/keyword_file_matches/log_files/ 2>/dev/null
+          mkdir --parents $format/keyword_file_matches/log_files/ 2>/dev/null
       for i in $logkeyfile; do cp --parents $i $format/keyword_file_matches/log_files/ ; done 2>/dev/null
   fi
 fi
@@ -1170,9 +1225,9 @@ if [ "$keyword" = "" ];then
       echo -e "\e[00;31m[-] Find keyword ($keyword) in .ini files (recursive 4 levels - output format filepath:identified line number where keyword appears):\e[00m\n$inikey" 
       echo -e "\n" 
      else 
-	echo -e "\e[00;31m[-] Find keyword ($keyword) in .ini files (recursive 4 levels):\e[00m" 
-	echo -e "'$keyword' not found in any .ini files" 
-	echo -e "\n"
+        echo -e "\e[00;31m[-] Find keyword ($keyword) in .ini files (recursive 4 levels):\e[00m" 
+        echo -e "'$keyword' not found in any .ini files" 
+        echo -e "\n"
     fi
 fi
 
@@ -1180,7 +1235,7 @@ if [ "$keyword" = "" ];then
   :
   else
     if [ "$export" ] && [ "$inikey" ]; then
-	  inikey=`find / -maxdepth 4 -name *.ini -type f -exec grep -lHn $keyword {} \; 2>/dev/null`
+          inikey=`find / -maxdepth 4 -name *.ini -type f -exec grep -lHn $keyword {} \; 2>/dev/null`
       mkdir --parents $format/keyword_file_matches/ini_files/ 2>/dev/null
       for i in $inikey; do cp --parents $i $format/keyword_file_matches/ini_files/ ; done 2>/dev/null
   fi
@@ -1222,10 +1277,10 @@ if [ "$export" ] && [ "$roothist" ]; then
   cp $roothist $format/history_files/ 2>/dev/null
 fi
 
-#all accessible .bash_history files in /home
-checkbashhist=`find /home -name .bash_history -print -exec cat {} 2>/dev/null \;`
-if [ "$checkbashhist" ]; then
-  echo -e "\e[00;31m[-] Location and contents (if accessible) of .bash_history file(s):\e[00m\n$checkbashhist"
+#all accessible .bash_history, fish_history[.*], .zsh_history, .zhistory, .tcsh_history, .csh_history, .nano_history and .python_history files in /home
+checkallhist=`find /home -regex '.*\.?\(bash_\|fish_\|zsh_\|z\|tcsh_\|csh_\|nano_\|python_\)history\(\..*\)?' -print -exec cat {} 2>/dev/null \;`
+if [ "$checkallhist" ]; then
+  echo -e "\e[00;31m[-] Location and contents (if accessible) of .bash_history file(s):\e[00m\n$checkallhist"
   echo -e "\n"
 fi
 
@@ -1233,7 +1288,11 @@ fi
 bakfiles=`find / -name *.bak -type f 2</dev/null`
 if [ "$bakfiles" ]; then
   echo -e "\e[00;31m[-] Location and Permissions (if accessible) of .bak file(s):\e[00m"
-  for bak in `echo $bakfiles`; do ls -la $bak;done
+  oldifs=$IFS
+  while IFS= read -r bak; do
+          ls -la "$bak"
+  done <<< "$bakfiles"
+  IFS=$oldifs
   echo -e "\n"
 fi
 
@@ -1307,10 +1366,66 @@ if [ "$lxccontainer" ]; then
 fi
 
 #specific checks - are we a member of the lxd group
-lxdgroup=`id | grep -i lxd 2>/dev/null`
+lxdgroup=`id $(whoami) | grep -i lxd 2>/dev/null`
 if [ "$lxdgroup" ]; then
-  echo -e "\e[00;33m[+] We're a member of the (lxd) group - could possibly misuse these rights!\e[00m\n$lxdgroup"
+  echo -e "\e[00;33m[+] We're a member of the (lxd) group - could possibly misuse these rights!"
+  echo -e "\e[00;33m[+] See: http://web.archive.org/web/20200217020257/https://book.hacktricks.xyz/linux-unix/privilege-escalation/lxd-privilege-escalation\e[00m\n$lxdgroup"
   echo -e "\n"
+fi
+}
+
+# Add Kubernetes Checks by salecharohit
+k8s_checks()
+{
+
+k8sconfig=`kubectl config view 2>/dev/null`
+
+if [ "$k8sconfig" ]; then
+  echo -e "\e[00;33m[+] Looks like there is a Kubernetes Cluster running \e[00m\n$k8sconfig"
+  echo -e "\n"
+
+
+k8sservices=`kubectl get services 2>/dev/null`
+if [ "$k8sservices" ]; then
+  echo -e "\e[00;33m[+] Services Running on Kubernetes cluster. \e[00m\n$k8sservices"
+  echo -e "\n"
+fi
+
+k8spodswithlabels=`kubectl get pods --all-namespaces 2>/dev/null`
+if [ "$k8spodswithlabels" ]; then
+  echo -e "\e[00;33m[+] Kubernetes Pods with Labels \e[00m\n$k8spodswithlabels"
+  echo -e "\e[00;33m[+] Run 'kubectl logs <pod-name>' to search for interesting information in logs\e[00m\n"
+  echo -e "\e[00;33m[+] Run 'kubectl exec -it <pod-name> -- sh' to gain shell access into pods and extract information like 'printenv' etc \e[00m\n"
+  echo -e "\n"
+fi
+
+k8snodes=`kubectl get nodes 2>/dev/null`
+if [ "$k8snodes" ]; then
+  echo -e "\e[00;33m[+] Kubernetes Nodes \e[00m\n$k8snodes"
+  echo -e "\n"
+fi
+
+k8sevents=`kubectl get events 2>/dev/null`
+if [ "$k8sevents" ]; then
+  echo -e "\e[00;33m[+] Kubernetes Events. Check here for interesting \e[00m\n$k8sevents"
+  echo -e "\n"
+fi
+
+k8ssecrets=`kubectl get secret -o json 2>/dev/null`
+if [ "$k8ssecrets" ]; then
+  echo -e "\e[00;33m[+] Fetch all Secrets stored in Kubernetes Cluster \e[00m\n$k8ssecrets"
+  echo -e "\n"
+fi
+
+fi
+
+}
+
+vm_checks(){
+vm=`cat /sys/class/dmi/id/product_name 2>/dev/null | grep -Ei 'vmware|virtualbox|hyper-v'`
+if [[ "${vm}" ]]; then
+       echo -e "\e[00;33m[-] Virtual Machine: \e[00m\n$vm"
+       echo -e "\n"
 fi
 }
 
@@ -1333,6 +1448,8 @@ call_each()
   interesting_files
   docker_checks
   lxc_container_checks
+  k8s_checks
+  vm_checks
   footer
 }
 

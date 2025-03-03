@@ -8,3 +8,7 @@ Following People have contributed to various features (list in no particular ord
 * https://github.com/d78ui98 : code optimization
 * https://github.com/djhohnstein : added checks for private keys, AWS keys and git credential files
 * @3therk1ll : added checks for .bak files
+* @salecharohit : kubernetes checks
+* @jsav0 : optimized thorough check
+* @Psmths : added nfs and redis enumeration
+* @emlyn, @plasticuproject, @Kegn, @telwell, @anio, @nodauf, @blitztide, @pwneddesal, @navenox : various features

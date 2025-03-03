@@ -2,6 +2,24 @@
 
 Note: Export functionality is currently in the experimental stage.
 
+## V0.99 (release 03-03-2025)
+* Add dev tools check to interesting files (feature request by @mohinparamasivam)
+* Add ptrace_scope check (feature request by @FrankSpierings)
+* Add virtual machine checks (tested VMWare, VirtualBox)
+* Add trash check (feature request by @uditsingh0909)
+* Add new gtfobins to binarylist (by @naven0x https://github.com/rebootuser/LinEnum/pull/67)
+* Add firewall config check (by @pwneddesal https://github.com/rebootuser/LinEnum/pull/63)
+* Add NFS and redis enumeration (by @Psmths https://github.com/rebootuser/LinEnum/pull/62)
+* Fix .bak file scan to account for space in file name (by @blitztide https://github.com/rebootuser/LinEnum/pull/58)
+* Display process list in forest view (by @nodauf https://github.com/rebootuser/LinEnum/pull/57)
+* Add more history files support: fish, zsh, csh et al (by @anio https://github.com/rebootuser/LinEnum/pull/56)
+* Add reference for privesc lxd group (by @telwell https://github.com/rebootuser/LinEnum/pull/55)
+* Add username to id line in grpinfo (by @Kegn https://github.com/rebootuser/LinEnum/pull/54)
+* Optimize thorough check: reduced if;then to [&& (by @jsav0 https://github.com/rebootuser/LinEnum/pull/51)
+* Add tshark, tcpdump, wireshark to interesting files (by @plasticuproject https://github.com/rebootuser/LinEnum/pull/50/files)
+* Prevent finding false positive keys in self (by @emlyn https://github.com/rebootuser/LinEnum/pull/49)
+* Add Kubernetes checks (by @salecharohit https://github.com/rebootuser/LinEnum/pull/46/files)
+
 ## V0.982 (release 07-01-2020)
 * Improvements to script execution speed by @Jrhenderson11 (https://github.com/rebootuser/LinEnum/pull/45 & https://github.com/rebootuser/LinEnum/commit/13741ce79fd5627da64bcf6a04fea11829e91ec8)
 
